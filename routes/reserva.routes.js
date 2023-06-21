@@ -22,3 +22,6 @@ router.put("/editar/:id", actualizarReserva);
 router.delete("/:id", eliminarReserva);
 
 module.exports = router;
+
+
+

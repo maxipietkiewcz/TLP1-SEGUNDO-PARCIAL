@@ -28,3 +28,8 @@ app.use((req, res, next) => {
 // Starting the server
 const port = process.env.PORT || 3000; // Obtener el número de puerto desde las variables de entorno o utilizar el puerto 3000 como predeterminado
 app.listen(port, () => console.log(`Server is running on port ${port}`));
+
+
+
+
+

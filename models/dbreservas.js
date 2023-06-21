@@ -44,3 +44,5 @@ sequelize
   });
 
 module.exports = Reserva;
+
+
