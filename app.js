@@ -2,19 +2,25 @@
 const cors = require("cors");
 const express = require("express");
 const path = require("path");
-
+const reservaRoutes = require("./routes/reserva.routes");
+const ejs = require("ejs");
 const app = express();
 
 // Middlewares
-app.use(cors()); // Habilitar CORS para permitir solicitudes desde cualquier origen
-app.use(express.json()); // Habilitar el análisis del cuerpo de las solicitudes en formato JSON
+app.use(cors());
+app.use(express.json());
+app.use(express.static(path.join(__dirname, "public")));
 
 app.use(express.static(path.join(__dirname, "public")));
 
-// Routes
-app.use("/api", require("./routes/reserva.routes"));
+// Configuración del motor de vistas
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
 
-// Si la petición no coincide con ninguna de las rutas declaradas, mostrar error 404
+// Routes
+app.use("/reservas", reservaRoutes);
+
+// Manejo de errores
 app.use((req, res, next) => {
   res.status(404).json({ error: "Endpoint not found" });
 });
